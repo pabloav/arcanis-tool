@@ -36,13 +36,6 @@ class PlayerController < ApplicationController
     render :partial => 'player_state_table' 
   end
   
-  # TODO: This needs to move to the DM controller but here for now for debugging
-  def tick
-    @master_clock.tick!
-    set_player
-    render :partial => 'player_state_table' 
-  end
-
 private
   def check_session
     return true if session[:player].present?
