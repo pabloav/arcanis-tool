@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20110726132428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "clock",      :default => 1
+    t.integer  "serial",     :default => 1
   end
 
   create_table "players", :force => true do |t|
