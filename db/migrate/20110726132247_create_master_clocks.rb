@@ -4,6 +4,7 @@ class CreateMasterClocks < ActiveRecord::Migration
 
       t.timestamps
       t.integer :clock, :default => 1
+      t.integer :serial, :default => 1
     end
   end
 
