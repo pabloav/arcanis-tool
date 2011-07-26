@@ -2,7 +2,8 @@
 <% clockgap = false%>
 <table id="dm_table" width="320">
 	<tr class="dm_header">
-		<th colspan="4">Master Clock: <%= @master_clock.clock %></th>
+		<th colspan="3">Master Clock: <%= @master_clock.clock %></th>
+		<th><%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "dm_table_div" %></th>
 		<th><%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %></th>
 		<th><%= link_to_remote "Reset Scene", :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %><br/>
 		</th>
@@ -15,13 +16,17 @@
 	</tr>
 	<% clockgap = true; end %>
 	<tr <% if p.clock > @master_clock.clock %> class="later"<% end %>>
-		<td><%= radio_button_tag :player_id, p.id %></td>
+		<td><% if p.npc? or true %><%= radio_button_tag :player_id, p.id %><% else %>&nbsp;<% end %></td>
 		<td><%= p.name %></td>
 		<td><%= p.clock %></td>
 		<td><%= p.strain_label %></td>
 		<td><%= p.recovery_label %></td>
 		<td>
-			<%= link_to_remote "Push 2", :url => { :action => :push, :speed => 2, :player_id => p.id }, :update => "dm_table_div" %>
+			<% if p.npc? %>
+				<%= link_to_remote "Kill", :url => { :action => :kill, :player_id => p.id }, :update => "dm_table_div" %>
+			<% else %>
+				<%= link_to_remote "Push 2", :url => { :action => :push, :speed => 2, :player_id => p.id }, :update => "dm_table_div" %>
+			<% end %>
 		</td>
 	</tr>
 <% end %>
