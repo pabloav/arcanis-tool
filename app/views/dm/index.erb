@@ -1,0 +1,6 @@
+
+<div id="dm_table_div">
+<%= render :partial => 'dm_table' %>
+</div>
+
+<%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %>

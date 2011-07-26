@@ -42,7 +42,6 @@ class PlayerController < ApplicationController
     set_player
     render :partial => 'player_state_table' 
   end
-    
 
 private
   def check_session

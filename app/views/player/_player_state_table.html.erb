@@ -1,9 +1,15 @@
 <table width="320" cellspacing="0" cellpadding="2" margin="0" id="player_state_table">
 	<tr><th>Master Clock</th><th><%= @master_clock.clock %></th></tr>
 	<tr><th>Name</th><td><%= @player.name %></td></tr>
-	<tr><th>Clock</th><td <%= (@player.ready?) ? 'class="green"' : ''%>><%= @player.clock%></td></tr>
-	<tr><th>Strain</th><td <%= (@player.ready? and @player.strain > 0) ? 'class="yellow"' : ''%>><%= @player.strain %></td></tr>
-	<tr><th>Strain Clock</th><td><%= @player.strain_clock %></td></tr>
-	<tr><th>Recovery</th><td <%= (@player.ready? and @player.recovery > 0) ? 'class="red"' : ''%>><%= @player.recovery %></td></tr>
-	<tr><th>Recovery Clock</th><td><%= @player.recovery_clock %></td></tr>
+	<tr><th>Player Clock</th><td <%= (@player.ready?(@master_clock)) ? 'class="green"' : ''%>><%= @player.clock%></td></tr>
+	<tr><th>Strain</th>
+		<td <%= (@player.ready?(@master_clock) and @player.strain > 0) ? 'class="yellow"' : ''%>>
+			<%= @player.strain_label%>
+		</td>
+	</tr>
+	<tr><th>Recovery</th>
+		<td <%= (@player.ready?(@master_clock) and @player.recovery > 0) ? 'class="red"' : ''%>>
+			<%= @player.recovery_label%>
+		</td>
+	</tr>
 </table>
