@@ -29,14 +29,14 @@ class PlayerController < ApplicationController
   end
   
   
-  def refresh_state
+  def refresh
     render :partial => 'player_state_table' 
   end
   
   def perform
     @player.perform!(params[:clock].to_i, params[:speed].to_i, params[:strain].to_i, params[:recovery].to_i)
     @master_clock.touch!
-    refresh_state
+    refresh
   end
   
 private
