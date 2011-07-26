@@ -1,5 +1,9 @@
 <table width="320" cellspacing="0" cellpadding="2" margin="0" id="action_block">
-	<tr><th>Clock</th><td><%= text_field_tag :clock, @master_clock.clock, :size => 3 %></td><td>Set to Master</td></tr>
+	<tr>
+		<th>Clock</th>
+		<td><%= text_field_tag :clock, @master_clock.clock, :size => 3, :id => "action_clock" %></td>
+		<td><%= link_to_function "Set to current", "$('action_clock').value = currentClock"%></td>
+	</tr>
 	<tr><th>Speed</th><td><%= text_field_tag :speed, nil, :size => 3 %></td><td>Incidental 5, Incidental 10</td></tr>
 	<tr><th>Strain</th><td><%= text_field_tag :strain, nil, :size => 3 %></td><td>&nbsp;</td></tr>
 	<tr><th>Recovery</th><td><%= text_field_tag :recovery, nil, :size => 3 %></td><td>&nbsp;</td></tr>

@@ -14,6 +14,7 @@ class MasterClock < ActiveRecord::Base
         p.decrement!(:recovery)
       end
     end
+    touch!
   end
   
   def touch!
