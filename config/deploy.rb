@@ -21,4 +21,15 @@ namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
+  
+  task :debianize, :roles => :app do
+    run "cd #{latest_release}; /usr/local/bin/rails-app-debianize"
+  end
+  
+  task :start do 
+    run "cd #{current_path}; /usr/local/bin/rails-app-debianize"
+  end
+  
+  after "deploy:update_code", "deploy:debianize"
+  
 end
