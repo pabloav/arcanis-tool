@@ -9,6 +9,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :recovery_clock, :default => 0
       t.integer :strain, :default => 0
       t.integer :strain_clock, :default => 0
+      t.boolean :npc, :default => false
     end
   end
 

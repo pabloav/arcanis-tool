@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(:version => 20110726132428) do
   create_table "master_clocks", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "clock"
+    t.integer  "clock",      :default => 1
   end
 
   create_table "players", :force => true do |t|
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110726132428) do
     t.integer  "recovery_clock", :default => 0
     t.integer  "strain",         :default => 0
     t.integer  "strain_clock",   :default => 0
+    t.boolean  "npc",            :default => false
   end
 
   create_table "sessions", :force => true do |t|
