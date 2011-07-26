@@ -13,12 +13,20 @@ class DmController < ApplicationController
     if params[:player_id].present? and params[:speed].present?
       p = Player.find(params[:player_id])
       p.push!(@master_clock, params[:speed].to_i)
+      @master_clock.touch!
     end
     refresh
   end
   
   def reset_scene
-    @players.each { |p| p.reset! }
+    @players.each do |p| 
+      if p.npc?
+        p.destroy
+      else
+        p.reset! 
+      end
+    end
+    
     @master_clock.reset!
     refresh
   end
@@ -27,6 +35,14 @@ class DmController < ApplicationController
     if params[:player_id].present?
       @player = Player.find(params[:player_id])
       @player.perform!(params[:clock].to_i, params[:speed].to_i, params[:strain].to_i, params[:recovery].to_i)
+      @master_clock.touch!
+    end
+    refresh
+  end
+  
+  def kill
+    if params[:player_id].present?
+      Player.find(params[:player_id]).destroy
     end
     refresh
   end
