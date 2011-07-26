@@ -1,13 +1,27 @@
+
+<% clockgap = false%>
 <table id="dm_table" width="320">
-	<tr><th colspan="5">Master Clock: <%= @master_clock.clock %></th></tr>
-	<tr><th>Player</th><th>Clock</th><th>Strain</th><th>Recovery</th><th>&nbsp;</th></tr>
+	<tr class="dm_header">
+		<th colspan="4">Master Clock: <%= @master_clock.clock %></th>
+		<th><%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %></th>
+		<th><%= link_to_remote "Reset Scene", :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %><br/>
+		</th>
+	</tr>
+	<tr><th>&nbsp;</th><th>Player</th><th>Clock</th><th>Strain</th><th>Recovery</th><th>&nbsp;</th></tr>
 <% @players.sort { |a,b| a.clock <=> b.clock }.each do |p|  %>
-	<tr>
-		<td><%= p.name%></td>
+	<% if !clockgap and p.clock > @master_clock.clock %>
+	<tr class="clockgap">
+		<td colspan="6" ></td>
+	</tr>
+	<% clockgap = true; end %>
+	<tr <% if p.clock > @master_clock.clock %> class="later"<% end %>>
+		<td><%= radio_button_tag :player_id, p.id %></td>
+		<td><%= p.name %></td>
 		<td><%= p.clock %></td>
 		<td><%= p.strain_label %></td>
 		<td><%= p.recovery_label %></td>
-		<td><%= link_to_remote "Push 2", :url => { :action => :push, :speed => 2, :player_id => p.id }, :update => "dm_table_div" %>
+		<td>
+			<%= link_to_remote "Push 2", :url => { :action => :push, :speed => 2, :player_id => p.id }, :update => "dm_table_div" %>
 		</td>
 	</tr>
 <% end %>
