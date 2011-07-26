@@ -14,6 +14,7 @@ class PlayerController < ApplicationController
         p.save
       end
 
+      @master_clock.touch!
       redirect_to :action => :index
     end
   end
@@ -22,6 +23,7 @@ class PlayerController < ApplicationController
     reset_session
     if @player
       @player.destroy
+      @master_clock.touch!
     end
     redirect_to :action => :index
   end
@@ -33,7 +35,8 @@ class PlayerController < ApplicationController
   
   def perform
     @player.perform!(params[:clock].to_i, params[:speed].to_i, params[:strain].to_i, params[:recovery].to_i)
-    render :partial => 'player_state_table' 
+    @master_clock.touch!
+    refresh_state
   end
   
 private
