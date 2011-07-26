@@ -1,0 +1,17 @@
+<div id="player_state">
+	<%= render :partial => 'player_state_table' %>
+</div>
+<br/>
+<% form_remote_tag :url => url_for(:action => :perform) do -%>
+	<table width="320" cellspacing="0" cellpadding="2" margin="0" id="action_block">
+		<tr><th>Clock</th><td><%= text_field_tag :clock, nil, :size => 3 %></td><td>Set to Master</td></tr>
+		<tr><th>Speed</th><td><%= text_field_tag :speed, nil, :size => 3 %></td><td>Incidental 5, Incidental 10</td></tr>
+		<tr><th>Recovery</th><td><%= text_field_tag :recovery, nil, :size => 3 %></td><td>&nbsp;</td></tr>
+		<tr><th>Recovery</th><td><%= text_field_tag :strain, nil, :size => 3 %></td><td>&nbsp;</td></tr>
+		<tr><td colspan="3"><%= submit_tag "Go" %></td></tr>
+	</table>
+<% end -%>
+
+
+
+<%= link_to  "Reset", :action => :logout %>
