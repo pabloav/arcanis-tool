@@ -3,7 +3,7 @@
 <table id="dm_table" width="320">
 	<tr class="dm_header">
 		<th colspan="3">Master Clock: <%= @master_clock.clock %></th>
-		<th><%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "dm_table_div" %></th>
+		<th><%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "dm_table_div", :html => { :id => "refresh" } %></th>
 		<th><%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %></th>
 		<th><%= link_to_remote "Reset Scene", :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %><br/>
 		</th>

@@ -1,5 +1,5 @@
 
-<%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "player_state" %>
+<%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "player_state", :html => { :id => "refresh" } %>
 <div id="player_state">
 	<%= render :partial => 'player_state_table' %>
 </div>
