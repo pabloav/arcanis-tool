@@ -17,16 +17,16 @@
 	</tr>
 	<% clockgap = true; end %>
 	<tr <% if p.clock > @master_clock.clock %> class="later"<% end %>>
-		<td><% if p.npc? or true %><%= radio_button_tag :player_id, p.id %><% else %>&nbsp;<% end %></td>
+		<td><% if p.npc? or true %><%= radio_button_tag :player_id, p.id, false, :onclick => "$('action_clock').value = #{p.clock}" %><% else %>&nbsp;<% end %></td>
 		<td><%= p.name %></td>
 		<td><%= p.clock %></td>
 		<td><%= p.strain_label %></td>
 		<td><%= p.recovery_label %></td>
 		<td>
+			<%= link_to_function "Push", "push('#{p.id}', '#{url_for({ :action => :push })}', 'dm_table_div')" %>
 			<% if p.npc? %>
 				<%= link_to_remote "Kill", :url => { :action => :kill, :player_id => p.id }, :update => "dm_table_div" %>
 			<% else %>
-				<%= link_to_function "Push", "push('#{p.id}', '#{url_for({ :action => :push })}', 'dm_table_div')" %>
 			<% end %>
 		</td>
 	</tr>
