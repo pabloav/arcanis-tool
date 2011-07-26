@@ -15,6 +15,7 @@ private
       m = MasterClock.new()
       m.clock = 1
       m.save
+      @master_clock = m
     end
   end
 end
