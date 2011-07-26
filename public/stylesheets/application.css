@@ -1,3 +1,6 @@
 .green { background-color: #dfd;}
 .yellow { background-color: #ffd;}
 .red { background-color: #fdd;}
+
+.later { background-color: #ddd; opacity: .5;}
+.clockgap { height: 25px;}
