@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
   before_filter :set_clock
+  
+  def current_clock
+    render :text => @master_clock.clock
+  end
+  
+  def current_serial
+    render :text => @master_clock.serial
+  end
+  
+  def current
+    render :json => { :clock => @master_clock.clock, :serial => @master_clock.serial }.to_json
+  end
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password

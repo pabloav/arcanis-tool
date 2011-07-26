@@ -1,6 +1,6 @@
 class PlayerController < ApplicationController
-  before_filter :check_session, :except => [:identify ]
-  before_filter :set_player, :except => [:identify ]
+  before_filter :check_session, :except => [:identify, :current, :current_serial, :current_clock ]
+  before_filter :set_player, :except => [:identify, :current, :current_serial, :current_clock ]
   def index
   end
   
