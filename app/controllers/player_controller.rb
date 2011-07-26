@@ -26,23 +26,23 @@ class PlayerController < ApplicationController
     redirect_to :action => :index
   end
   
-  def nudge_strain
-    nudge_generic(:strain)
-  end
-  
-  def nudge_generic(key)
-    if params[:nudge].present?
-      if params[:nudge].to_i == 1
-       @player.increment!(key) 
-      else
-        @player.decrement!(key) 
-      end
-    end
-  end
   
   def refresh_state
     render :partial => 'player_state_table' 
   end
+  
+  def perform
+    @player.perform!(params[:clock].to_i, params[:speed].to_i, params[:strain].to_i, params[:recovery].to_i)
+    render :partial => 'player_state_table' 
+  end
+  
+  # TODO: This needs to move to the DM controller but here for now for debugging
+  def tick
+    @master_clock.tick!
+    set_player
+    render :partial => 'player_state_table' 
+  end
+    
 
 private
   def check_session
