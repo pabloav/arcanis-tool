@@ -31,5 +31,6 @@ namespace :deploy do
   end
   
   after "deploy:update_code", "deploy:debianize"
+  after "deploy:update_code", "deploy:migrate"
   
 end
