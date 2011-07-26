@@ -15,5 +15,10 @@ class MasterClock < ActiveRecord::Base
       end
     end
   end
+  
+  def reset!
+    self.clock = 1
+    self.save
+  end
 
 end

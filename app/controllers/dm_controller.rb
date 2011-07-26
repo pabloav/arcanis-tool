@@ -23,8 +23,16 @@ class DmController < ApplicationController
     render :partial => 'dm_table'
   end
 
+  def reset_scene
+    @players.each { |p| p.reset! }
+    @master_clock.reset!
+    refresh
+  end
+
+private
   def load_players
     @players = Player.all
   end
   
+    
 end

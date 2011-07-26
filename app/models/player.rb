@@ -50,6 +50,15 @@ class Player < ActiveRecord::Base
     end
     return str
   end
+  
+  def reset!
+    self.clock = 1
+    self.strain = 0
+    self.strain_clock = 0
+    self.recovery = 0
+    self.recovery_clock = 0
+    self.save
+  end
 
 private
   def max(a, b)

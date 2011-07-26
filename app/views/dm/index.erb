@@ -3,4 +3,5 @@
 <%= render :partial => 'dm_table' %>
 </div>
 
-<%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %>
+<%= link_to_remote "Tick!", :url => { :action => :tick }, :update => "dm_table_div" %><br/>
+<%= link_to_remote "Reset Scene", :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %><br/>
