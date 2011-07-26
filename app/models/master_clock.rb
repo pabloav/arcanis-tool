@@ -16,8 +16,13 @@ class MasterClock < ActiveRecord::Base
     end
   end
   
+  def touch!
+    self.increment!(:serial)
+  end
+  
   def reset!
     self.clock = 1
+    self.serial = 1
     self.save
   end
 
