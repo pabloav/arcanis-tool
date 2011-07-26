@@ -20,5 +20,13 @@ function refresh() {
 	$('refresh').onclick()
 }
 
+function push(pid, url, el) {
+	var speed
+	speed = prompt("How many ticks?")
+	new Ajax.Updater(el, url, { 
+		parameters: { "player_id" : pid, "speed" : speed}
+	});
+}
+
 // This is where we set the serial check interval, FYI.
-new PeriodicalExecuter(checkSerial, 1)
+new PeriodicalExecuter(checkSerial, 3)

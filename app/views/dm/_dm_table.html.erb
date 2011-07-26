@@ -26,7 +26,7 @@
 			<% if p.npc? %>
 				<%= link_to_remote "Kill", :url => { :action => :kill, :player_id => p.id }, :update => "dm_table_div" %>
 			<% else %>
-				<%= link_to_remote "Push 2", :url => { :action => :push, :speed => 2, :player_id => p.id }, :update => "dm_table_div" %>
+				<%= link_to_function "Push", "push('#{p.id}', '#{url_for({ :action => :push })}', 'dm_table_div')" %>
 			<% end %>
 		</td>
 	</tr>
