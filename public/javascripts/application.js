@@ -34,3 +34,11 @@ function set_value(el, val) {
 
 // This is where we set the serial check interval, FYI.
 new PeriodicalExecuter(checkSerial, 3)
+
+function enable_ipad() { 
+	$$('.ipad_target').each(function(e){ e.addClassName('ipad') } )
+}
+
+function disable_ipad() { 
+	$$('.ipad_target').each(function(e){ e.removeClassName('ipad') } )
+}

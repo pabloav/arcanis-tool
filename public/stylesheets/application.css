@@ -39,3 +39,13 @@ table { background-color: #ffe; margin-left:auto; margin-right: auto;}
 #add_monster_div form { margin: 0 10px 10px 10px; padding: 0; text-align:left ;}
 
 #add_monster_div { width: 93%; margin-left: auto; margin-right: auto; border: 1px solid black; background-color: #ffe; }
+/*
+#dm_main_outer #dm_table_div { float: left; width: 50%;}
+#dm_main_outer #action_block { float: right; width: 50%;}
+#dm_main_outer #add_monster_div { float: right; width: 50%; margin-top: 10px;}
+*/
+
+#dm_main_outer.ipad { width: 720px;}
+#dm_table_div.ipad { float: left; width: 50%;}
+#action_block.ipad { float: right; width: 50%;}
+#add_monster_div.ipad { float: right; width: 50%; margin-top: 10px;}

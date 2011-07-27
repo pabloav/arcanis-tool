@@ -1,14 +1,15 @@
-<div id="dm_main_outer">
-<% form_remote_tag :url => url_for(:action => :perform), :update => "dm_table"  do -%>
+<div id="dm_main_outer" class="ipad_target">
 
-<div id="dm_table_div">
+	<% form_remote_tag :url => url_for(:action => :perform), :update => "dm_table"  do -%>
+
+<div id="dm_table_div" class="ipad_target">
 <%= render :partial => 'dm_table' %>
 </div>
 
 <%= render :partial => '/player/action_block' %>
 <% end -%>
 
-<div id="add_monster_div">
+<div id="add_monster_div" class="ipad_target">
 	<h3 class="add_monster">Add Monster</h3>
 	<% form_remote_tag :url => url_for(:action => :add_monster), :update => "dm_table"  do -%>
 	Monster Name: <%= text_field_tag :monster_name %><br/>
@@ -16,4 +17,7 @@
 	<%= submit_tag 'Add'%>
 	<% end -%>
 </div>
+
+<%= link_to_function "Enable iPad", "enable_ipad();"%>
+<%= link_to_function "Disable iPad", "disable_ipad();"%>
 </div>
