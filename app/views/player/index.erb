@@ -1,13 +1,11 @@
 
-<%= link_to_remote "Refresh", :url => { :action => :refresh }, :update => "player_state", :html => { :id => "refresh" } %>
 <div id="player_state">
 	<%= render :partial => 'player_state_table' %>
 </div>
-
-<br/>
 
 <% form_remote_tag :url => url_for(:action => :perform), :update => "player_state"  do -%>
 	<%= render :partial => 'action_block' %>
 <% end -%>
 
-<%= link_to  "Reset", :action => :logout %>
+<%= link_to_remote image_tag('icons/arrow_refresh.png', :title => "Refresh State"), :url => { :action => :refresh }, :update => "player_state", :html => { :id => "refresh" } %>
+<%= link_to  image_tag('icons/cross.png', :title => "Reset session"), { :action => :logout }, { :confirm => "Are you sure you want to reset your session?" } %>

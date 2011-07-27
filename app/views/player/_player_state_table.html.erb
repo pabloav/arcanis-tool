@@ -1,6 +1,5 @@
-<%= Time.now() %>
-<table width="320" cellspacing="0" cellpadding="2" margin="0" id="player_state_table">
-	<tr><th>Master Clock</th><th><%= @master_clock.clock %></th></tr>
+<table id="player_state_table">
+	<tr><th>Master Clock</th><th><%= @master_clock.clock %> <%= timestamp%></th></tr>
 	<tr><th>Name</th><td><%= @player.name %></td></tr>
 	<tr><th>Player Clock</th><td <%= (@player.ready?(@master_clock)) ? 'class="green"' : ''%>><%= @player.clock%></td></tr>
 	<tr><th>Strain</th>
