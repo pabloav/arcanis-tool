@@ -1,15 +1,17 @@
 <% form_remote_tag :url => url_for(:action => :perform), :update => "dm_table"  do -%>
 
-<h3>Players</h3>
 <div id="dm_table_div">
 <%= render :partial => 'dm_table' %>
 </div>
 
-<h3>Perform Action</h3>
 <%= render :partial => '/player/action_block' %>
 <% end -%>
 
 <h3>Add Monster</h3>
-<% form_remote_tag :url => url_for(:action => :add_monster), :update => "dm_table"  do -%>
-Monster Name: <%= text_field_tag :monster_name %> Initiative: <%= text_field_tag :initiative, @master_clock.clock, :size => 2  %><%= submit_tag 'Add'%>
-<% end -%>
+<div id="add_monster_div">
+	<% form_remote_tag :url => url_for(:action => :add_monster), :update => "dm_table"  do -%>
+	Monster Name: <%= text_field_tag :monster_name %><br/>
+	Initiative: <%= text_field_tag :initiative, @master_clock.clock, :size => 2  %><br/
+	<%= submit_tag 'Add'%>
+	<% end -%>
+</div>

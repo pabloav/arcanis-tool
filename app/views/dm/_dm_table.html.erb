@@ -1,17 +1,15 @@
 
-<%= Time.now() %>
-
 <% clockgap = false%>
 <table id="dm_table" width="320">
 	<tr class="dm_header">
-		<th colspan="5">Master Clock: <%= @master_clock.clock %></th>
+		<th colspan="5">Master Clock: <%= @master_clock.clock %> <%= timestamp%></th>
 		<th>
 		<%= link_to_remote image_tag("icons/arrow_refresh.png", :title => "Refresh State"), :url => { :action => :refresh }, :update => "dm_table_div", :html => { :id => "refresh" } %>
 		<%= link_to_remote image_tag("icons/clock_go.png", :title => "Advance Clock"), :url => { :action => :tick }, :update => "dm_table_div" %>
 		<%= link_to_remote image_tag("icons/world_delete.png", :title => "Reset Scene"), :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %>
 		</th>
 	</tr>
-	<tr><th>&nbsp;</th><th>Player</th><th>Clock</th><th>Strain</th><th>Recovery</th><th>&nbsp;</th></tr>
+	<tr><th>&nbsp;</th><th>Player</th><th>Clock</th><th>Str</th><th>Rec</th><th>&nbsp;</th></tr>
 <% @players.sort { |a,b| a.clock <=> b.clock }.each do |p|  %>
 	<% if !clockgap and p.clock > @master_clock.clock %>
 	<tr class="clockgap">
