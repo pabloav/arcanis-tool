@@ -1,3 +1,4 @@
+<div id="dm_main_outer">
 <% form_remote_tag :url => url_for(:action => :perform), :update => "dm_table"  do -%>
 
 <div id="dm_table_div">
@@ -14,4 +15,5 @@
 	Initiative: <%= text_field_tag :initiative, @master_clock.clock, :size => 2  %><br/>
 	<%= submit_tag 'Add'%>
 	<% end -%>
+</div>
 </div>
