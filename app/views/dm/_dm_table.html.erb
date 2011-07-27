@@ -2,8 +2,8 @@
 <% clockgap = false%>
 <table id="dm_table" width="320">
 	<tr class="dm_header">
-		<th colspan="5">Master Clock: <%= @master_clock.clock %> <%= timestamp%></th>
-		<th>
+		<th colspan="4">Master Clock: <%= @master_clock.clock %> <%= timestamp%></th>
+		<th colspan="2">
 		<%= link_to_remote image_tag("icons/arrow_refresh.png", :title => "Refresh State"), :url => { :action => :refresh }, :update => "dm_table_div", :html => { :id => "refresh" } %>
 		<%= link_to_remote image_tag("icons/clock_go.png", :title => "Advance Clock"), :url => { :action => :tick }, :update => "dm_table_div" %>
 		<%= link_to_remote image_tag("icons/world_delete.png", :title => "Reset Scene"), :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %>
