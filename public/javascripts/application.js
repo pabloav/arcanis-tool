@@ -28,5 +28,9 @@ function push(pid, url, el) {
 	});
 }
 
+function set_value(el, val) {
+	$(el).value = val
+}
+
 // This is where we set the serial check interval, FYI.
 new PeriodicalExecuter(checkSerial, 3)

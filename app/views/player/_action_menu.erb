@@ -1,0 +1,19 @@
+<% actions = { 
+	:defensive => { },
+	:movement => { "Double Time (2 x move)" => 4, "Move Cautiously (move, no OA)" => 2 },
+	:incidental => { "Incidental 5ft" => 1, "Incidental 10ft" => 2 }
+	}
+%>
+<div id="action_menu_div">
+<table id="action_menu_table">
+	<% actions.each_key do |cat| %>
+		<tr><th class="header" colspan="2"><%= cat.to_s.titleize %></th></tr>
+		<% actions[cat].each_pair do |name, speed| %>
+			<th><%= set_action_speed(name, speed) %></th><td><%= speed %></td></tr>
+		<% end %>
+	<% end%>
+	<tr><th colspan="2" id="redbox_close">
+		<%= link_to_close_redbox "Close"%>
+	</th></tr>
+</table>
+</div>

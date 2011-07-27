@@ -4,7 +4,7 @@
 		<td><%= text_field_tag :clock, @master_clock.clock, :size => 3, :id => "action_clock" %></td>
 		<td><%= link_to_function image_tag("icons/arrow_refresh_small.png"), "$('action_clock').value = currentClock"%></td>
 	</tr>
-	<tr><th>Speed</th><td><%= text_field_tag :speed, nil, :size => 3 %></td><td><%= image_tag "icons/zoom.png" %></td></tr>
+	<tr><th>Speed</th><td><%= text_field_tag :speed, nil, :size => 3, :id => "action_speed" %></td><td><%= link_to_remote_redbox image_tag("icons/zoom.png"), { :url => {:action => :action_menu, :controller => :player} } %></td></tr>
 	<tr><th>Strain</th><td><%= text_field_tag :strain, nil, :size => 3 %></td><td>&nbsp;</td></tr>
 	<tr><th>Recovery</th><td><%= text_field_tag :recovery, nil, :size => 3 %></td><td>&nbsp;</td></tr>
 	<tr><th><%= submit_tag "Go" %></th><td colspan="2">&nbsp;</td></tr>

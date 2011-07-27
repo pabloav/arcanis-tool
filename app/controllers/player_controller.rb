@@ -1,6 +1,6 @@
 class PlayerController < ApplicationController
-  before_filter :check_session, :except => [:identify, :current, :current_serial, :current_clock ]
-  before_filter :set_player, :except => [:identify, :current, :current_serial, :current_clock ]
+  before_filter :check_session, :except => [:identify, :current, :current_serial, :current_clock, :action_menu ]
+  before_filter :set_player, :except => [:identify, :current, :current_serial, :current_clock, :action_menu ]
   def index
   end
   
@@ -37,6 +37,10 @@ class PlayerController < ApplicationController
     @player.perform!(params[:clock].to_i, params[:speed].to_i, params[:strain].to_i, params[:recovery].to_i)
     @master_clock.touch!
     refresh
+  end
+  
+  def action_menu
+    render :partial => 'action_menu'
   end
   
 private

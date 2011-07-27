@@ -7,11 +7,11 @@
 <%= render :partial => '/player/action_block' %>
 <% end -%>
 
-<h3>Add Monster</h3>
 <div id="add_monster_div">
+	<h3 class="add_monster">Add Monster</h3>
 	<% form_remote_tag :url => url_for(:action => :add_monster), :update => "dm_table"  do -%>
 	Monster Name: <%= text_field_tag :monster_name %><br/>
-	Initiative: <%= text_field_tag :initiative, @master_clock.clock, :size => 2  %><br/
+	Initiative: <%= text_field_tag :initiative, @master_clock.clock, :size => 2  %><br/>
 	<%= submit_tag 'Add'%>
 	<% end -%>
 </div>
