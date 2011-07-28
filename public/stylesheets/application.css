@@ -8,6 +8,7 @@
 body { margin:0; padding:0 ;}
 table { background-color: #ffe; margin-left:auto; margin-right: auto;}
 .timestamp { font-size: 10px;}
+.icon { margin: 2px; width: 1em; height: 1em;}
 
 /* Player Layout setup, optimized for iPhone */
 #player_main_outer { width: 320px; font-size: 18px; margin-left: auto; margin-right: auto; text-align: center;}
@@ -44,8 +45,12 @@ table { background-color: #ffe; margin-left:auto; margin-right: auto;}
 #dm_main_outer #action_block { float: right; width: 50%;}
 #dm_main_outer #add_monster_div { float: right; width: 50%; margin-top: 10px;}
 */
-
+/*
+img.icon.ipad { width: 1.5em; height: 1.5em;}
+*/
 #dm_main_outer.ipad { width: 720px;}
-#dm_table_div.ipad { float: left; width: 50%;}
-#action_block.ipad { float: right; width: 50%;}
-#add_monster_div.ipad { float: right; width: 50%; margin-top: 10px;}
+#dm_table_div.ipad { float: left; width: 49%;}
+#action_block.ipad { float: right; width: 100%;}
+#add_monster_div.ipad { float: right; width: 50%; }
+#dm_ipad_controls_div.ipad { float: left; width: 50%;}
+#action_form.ipad { float: right; width: 50%;}

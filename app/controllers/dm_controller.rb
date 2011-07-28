@@ -56,6 +56,7 @@ class DmController < ApplicationController
       p.save
     end
     refresh
+    # render :text => "ok"
   end
 
   def refresh

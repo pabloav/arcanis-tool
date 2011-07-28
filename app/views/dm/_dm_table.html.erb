@@ -4,9 +4,9 @@
 	<tr class="dm_header">
 		<th colspan="4">Master Clock: <%= @master_clock.clock %> <%= timestamp%></th>
 		<th colspan="2">
-		<%= link_to_remote image_tag("icons/arrow_refresh.png", :title => "Refresh State"), :url => { :action => :refresh }, :update => "dm_table_div", :html => { :id => "refresh" } %>
-		<%= link_to_remote image_tag("icons/clock_go.png", :title => "Advance Clock"), :url => { :action => :tick }, :update => "dm_table_div" %>
-		<%= link_to_remote image_tag("icons/world_delete.png", :title => "Reset Scene"), :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %>
+		<%= link_to_remote image_tag("icons/arrow_refresh.png", :title => "Refresh State", :class => "ipad_target icon"), :url => { :action => :refresh }, :update => "dm_table_div", :html => { :id => "refresh" } %>
+		<%= link_to_remote image_tag("icons/clock_go.png", :title => "Advance Clock", :class => "ipad_target icon"), :url => { :action => :tick }, :update => "dm_table_div" %>
+		<%= link_to_remote image_tag("icons/world_delete.png", :title => "Reset Scene", :class => "ipad_target icon"), :url => { :action => :reset_scene }, :update => "dm_table_div", :confirm => "Are you sure you want to reset the scene?" %>
 		</th>
 	</tr>
 	<tr><th>&nbsp;</th><th>Player</th><th>Clock</th><th>Str</th><th>Rec</th><th>&nbsp;</th></tr>
@@ -17,15 +17,15 @@
 	</tr>
 	<% clockgap = true; end %>
 	<tr <% if p.clock > @master_clock.clock %>class="later"<% end %>>
-		<td><% if p.npc? or true %><%= radio_button_tag :player_id, p.id, false, :onclick => "$('action_clock').value = #{p.clock}" %><% else %>&nbsp;<% end %></td>
+		<td><% if p.npc? or true %><%= radio_button_tag :player_id, p.id, false, :onclick => "set_value('action_player_id', #{p.id}); set_value('action_clock', #{p.clock});" %><% else %>&nbsp;<% end %></td>
 		<td><%= p.name %></td>
 		<td><%= p.clock %></td>
 		<td><%= p.strain_label %></td>
 		<td><%= p.recovery_label %></td>
 		<td>
-			<%= link_to_function image_tag("icons/control_pause_blue.png"), "push('#{p.id}', '#{url_for({ :action => :push })}', 'dm_table_div')" %>
+			<%= link_to_function image_tag("icons/control_pause_blue.png", :title => 'Push', :class => "ipad_target icon"), "push('#{p.id}', '#{url_for({ :action => :push })}', 'dm_table_div')" %>
 			<% if p.npc? %>
-				<%= link_to_remote image_tag("icons/cross.png"), :url => { :action => :kill, :player_id => p.id }, :update => "dm_table_div" %>
+				<%= link_to_remote image_tag("icons/cross.png", :title => "Kill", :class => "ipad_target icon"), :url => { :action => :kill, :player_id => p.id }, :update => "dm_table_div" %>
 			<% else %>
 			<% end %>
 		</td>
