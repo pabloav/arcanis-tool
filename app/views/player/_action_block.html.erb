@@ -2,22 +2,22 @@
 <table id="action_block" class="panel ipad_target">
 	<tr>
 		<th>Clock</th>
-		<td><%= text_field_tag :clock, @master_clock.clock, :size => 3, :id => "action_clock", :type => "tel", :min => 0, :class => "input_number" %></td>
+		<td><%= text_field_tag :clock, @master_clock.clock, :size => 3, :id => "action_clock", :type => "number", :pattern=>"\\d*", :min => 0, :class => "input_number" %></td>
 		<td><%= link_to_function image_tag("icons/arrow_refresh_small.png", :title => 'Sync to master clock', :class => "ipad_target icon"), "$('action_clock').value = currentClock"%></td>
 	</tr>
 	<tr>
 	  <th>Speed</th>
-	  <td><%= text_field_tag :speed, nil, :size => 3, :id => "action_speed", :type => "tel", :min => 0, :class => "input_number" %></td>
+	  <td><%= text_field_tag :speed, nil, :size => 3, :id => "action_speed", :type => "number", :pattern=>"\\d*", :min => 0, :class => "input_number" %></td>
 	  <td><%= link_to_remote_redbox image_tag("icons/zoom.png", :title => "See action menu", :class => "ipad_target icon"), { :url => {:action => :action_menu, :controller => :player} } %></td>
 	</tr>
 	<tr>
 	  <th>Strain</th>
-	  <td><%= text_field_tag :strain, nil, :size => 3, :type => "tel", :min => 0, :class => "input_number" %></td>
+	  <td><%= text_field_tag :strain, nil, :size => 3, :type => "number", :pattern=>"\\d*", :min => 0, :class => "input_number" %></td>
 	  <td>&nbsp;</td>
 	</tr>
 	<tr>
 	  <th>Recovery</th>
-	  <td><%= text_field_tag :recovery, nil, :size => 3, :type => "tel", :min => 0, :class => "input_number" %></td>
+	  <td><%= text_field_tag :recovery, nil, :size => 3, :type => "number", :pattern=>"\\d*", :min => 0, :class => "input_number" %></td>
 	  <td>&nbsp;</td>
 	</tr>
 	<tr>
